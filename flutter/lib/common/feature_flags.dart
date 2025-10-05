@@ -1,2 +1,4 @@
-// flutter/lib/common/feature_flags.dart
-const bool kDisableUpdates = true;
+import 'dart:io' show Platform;
+
+final bool kDisableUpdates =
+    Platform.isWindows || Platform.isLinux;
