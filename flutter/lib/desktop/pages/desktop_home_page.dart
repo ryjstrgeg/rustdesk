@@ -1,4 +1,4 @@
-import '../../common/feature_flags.dart';
+import 'package:flutter_hbb/common/feature_flags.dart';
 import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
