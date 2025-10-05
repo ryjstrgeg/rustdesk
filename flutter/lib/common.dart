@@ -1,3 +1,4 @@
+import '../../common/feature_flags.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
@@ -3802,15 +3803,22 @@ void earlyAssert() {
 }
 
 void checkUpdate() {
+  if (kDisableUpdates) {
+    stateGlobal.updateUrl.value = '';
+    return;
+  }
+
   if (!isWeb) {
     if (!bind.isCustomClient()) {
       platformFFI.registerEventHandler(
-          kCheckSoftwareUpdateFinish, kCheckSoftwareUpdateFinish,
-          (Map<String, dynamic> evt) async {
-        if (evt['url'] is String) {
-          stateGlobal.updateUrl.value = evt['url'];
-        }
-      });
+        kCheckSoftwareUpdateFinish,
+        kCheckSoftwareUpdateFinish,
+        (Map<String, dynamic> evt) async {
+          if (evt['url'] is String) {
+            stateGlobal.updateUrl.value = evt['url'];
+          }
+        },
+      );
       Timer(const Duration(seconds: 1), () async {
         bind.mainGetSoftwareUpdateUrl();
       });
