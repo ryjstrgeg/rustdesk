@@ -1,4 +1,4 @@
-import 'package:rustdesk/common/feature_flags.dart';
+import '../../common/feature_flags.dart';
 import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
