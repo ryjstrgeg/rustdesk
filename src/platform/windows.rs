@@ -1204,6 +1204,10 @@ fn get_default_install_path() -> String {
 }
 
 pub fn check_update_broker_process() -> ResultType<()> {
+    if cfg!(feature = "no-update") {
+        return Ok(());
+    }
+
     let process_exe = win_topmost_window::INJECTED_PROCESS_EXE;
     let origin_process_exe = win_topmost_window::ORIGIN_PROCESS_EXE;
 

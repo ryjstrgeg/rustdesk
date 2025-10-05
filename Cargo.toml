@@ -21,6 +21,7 @@ name = "service"
 path = "src/service.rs"
 
 [features]
+no-update = []
 inline = []
 cli = []
 use_samplerate = ["samplerate"]
