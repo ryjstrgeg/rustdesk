@@ -1677,8 +1677,8 @@ pub fn main_get_last_remote_id() -> String {
     LocalConfig::get_remote_id()
 }
 
-pub fn main_get_software_update_url() {
-    crate::common::check_software_update();
+pub fn main_get_software_update_url() -> String {
+    "".to_string() // заглушка
 }
 
 pub fn main_get_home_dir() -> String {
